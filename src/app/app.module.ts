@@ -7,19 +7,17 @@ import { THEMES_LIST } from './theme/symbols';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     ThemeModule.forRoot({
       themes: THEMES_LIST,
       active: {
-        useFactory: () => of('dark') as Observable<string>
+        useFactory: () => of('dark') as Observable<string>,
       },
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
