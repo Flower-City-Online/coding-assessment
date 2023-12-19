@@ -1,5 +1,8 @@
 .light[app-theme] {
-  --link: #ca51f9;
+   --primary-color: #fe3c72;
+  --secondary-color: rgba(255, 255, 255, 0.5);
+  --primary-background: linear-gradient(191.18deg, #27242c 61.33%, #0c0b0e 101.43%);
+ /*  --link: #ca51f9;
   --border: 1px solid rgba(0, 0, 0, 0.5);
   --border-2: 2px solid rgba(0, 0, 0, 0.5);
   --border-color: rgba(0, 0, 0, 0.5);
@@ -112,5 +115,5 @@
   --lib-menu-button-font-size: 12px;
   --lib-menu--button-font-family: 'Gilroy-Regular', serif;
 
-  --hover-shadow-color: #ffd2df;
+  --hover-shadow-color: #ffd2df; */
 }
