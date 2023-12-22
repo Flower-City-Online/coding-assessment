@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ThemeService } from './theme/theme.service';
 
@@ -7,8 +7,12 @@ import { ThemeService } from './theme/theme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'coding-assessment';
 
   constructor(public readonly themeService: ThemeService) {}
+
+  ngOnInit(): void {
+    this.themeService.init('dark');
+  }
 }
