@@ -1,0 +1,90 @@
+<ng-container>
+  <div class="body-container">
+    <header>
+      <a href="#" class="link-back">
+        <img src="assets/images/icons/arrow-left.svg" alt="Back">
+      </a>
+      <h1 class="text-white font-calistoga text-lg fw-400">Comments</h1>
+      <a href="jacascript:void(0)">
+        <img src="assets/images/icons/search.svg" alt="Search">
+      </a>
+    </header>
+    <div class="comments-wrapper">
+      <div class="comment-add">
+        <div class="comment-add-input">
+          <a href="javascript:void(0)">
+            <img src="assets/images/icons/emoji.svg" alt="">
+          </a>
+          <input type="text" placeholder="Add a comment">
+          <a href="javascript:void(0)" class="add">
+            <img src="assets/images/icons/comment-add.svg" alt="">
+          </a>
+        </div>
+        <a class="comment-add-btn">
+          <img src="assets/images/icons/send.svg" alt="">
+        </a>
+      </div>
+      <div class="comment-filter">
+        <div class="filter">
+          <input checked id="Featured" name="comment-filter" type="radio">
+          <label for="Featured">Featured</label>
+        </div>
+        <div class="filter">
+          <input id="Hot" name="comment-filter" type="radio">
+          <label for="Hot">Hot</label>
+        </div>
+        <div class="filter">
+          <input id="Top" name="comment-filter" type="radio">
+          <label for="Top">Top</label>
+        </div>
+        <div class="filter">
+          <input id="New" name="comment-filter" type="radio">
+          <label for="New">New</label>
+        </div>
+      </div>
+      <div class="comment-list">
+        <div *ngFor="let comment of comments" class="comment-item">
+          <div class="comment-profile">
+            <img [src]="comment.profileImg" alt="{{ comment.username }}" class="profile-img">
+            <div class="likes">
+              <img src="assets/images/icons/upper-triangle.svg" alt="">
+              <span class="fw-700 text-primary">{{ comment.likesCount }}</span>
+              <img src="assets/images/icons/down-triangle.svg" alt="">
+            </div>
+          </div>
+          <div class="comment-body">
+            <div class="comment-head">
+              <h5 class="text-xsm text-gray fw-400">{{ comment.username }} - {{ comment.hoursAgo }}</h5>
+              <div class="comment-option">
+                <img src="assets/images/icons/option.svg" alt="">
+              </div>
+            </div>
+            <div class="comment-text">
+              <p class="text-white text-sm">{{ comment.commentText }}</p>
+            </div>
+            <!-- Display post images if available -->
+            <app-light-box-slider [images]="comment.postImages"
+              *ngIf="comment.postImages && comment.postImages.length > 0"></app-light-box-slider>
+            <div class="comment-footer text-xsm">
+              <a href="javascript:void(0)" class="text-gray">
+                <img src="assets/images/icons/massage.svg" alt="Reply">
+                <span>Reply</span>
+              </a>
+              <a href="javascript:void(0)" class="text-gray">
+                <ng-container *ngIf="comment.featured; else notFeatured">
+                  <img src="assets/images/icons/feature-filled.svg" alt="Reply">
+                  <span>Featured</span>
+                </ng-container>
+                <ng-template #notFeatured>
+                  <img src="assets/images/icons/feature-outline.svg" alt="Reply">
+                  <span>Feature comment</span>
+                </ng-template>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-loader *ngIf="isLoading"></app-loader>
+</ng-container>

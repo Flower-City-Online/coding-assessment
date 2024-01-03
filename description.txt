@@ -1,0 +1,65 @@
+Application Overview:
+The application is a small post viewer that displays posts with the ability to showcase multiple images in a lightbox. It leverages Angular for building the user interface, utilizes RxJS for handling asynchronous operations, and follows best practices to ensure maintainability and performance.
+
+CSS Variables for Styling:
+CSS variables are effectively utilized to enhance styling flexibility and maintainability. By defining variables for colors, fonts, and other stylistic elements, changes can be made consistently throughout the application by adjusting these variables. This promotes a cohesive and easily maintainable visual design.
+
+Example:
+
+css
+
+:root {
+  --primary-clr: #FE3C72;
+  --white-clr: #fff;
+  --gray-clr: #BDBDBD;
+  --font-calistoga: 'Calistoga', 'Times New Roman', Times, serif;
+  --font-gilroy: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --card-bg: #27242C;
+  --body-gradient: linear-gradient(191deg, #27242C 61.33%, #0C0B0E 101.43%);
+  --primary-gradient: linear-gradient(94deg, #FE3C72 1.26%, #E15561 100%);
+}
+
+.text-primary {
+  color: var(--primary-clr);
+}
+
+Component Relationships:
+Efficient management of parent and child components is achieved by breaking down the application into modular components. Each component is responsible for a specific part of the UI, promoting reusability and separation of concerns. For example, AppComponent handles the rendering of Comments, while a LightboxComponent manages the display of images in a lightbox.
+
+DRY Principle (Don't Repeat Yourself):
+Code duplication is minimized through the use of Angular features such as ngFor to repeat HTML structures dynamically. A common loader component is created to avoid duplicating loading-related code. This adherence to the DRY principle ensures cleaner and more maintainable code.
+
+Example:
+
+html
+
+<!-- AppComponent.html -->
+<div *ngFor="let comment of comments">
+   <!-- Display post images if available -->
+    <app-light-box-slider [images]="comment.postImages"
+      *ngIf="comment.postImages && comment.postImages.length > 0"></app-light-box-slider>
+</div>
+
+<!-- LoaderComponent.html -->
+<div class="loader-container">
+  <img src="assets/loader.gif" alt="Loading...">
+</div>
+
+Performance Optimization:
+To optimize performance, the application employs asynchronous operations, such as data fetching, are handled using RxJS observables to prevent blocking the main thread.
+
+RxJS Utilization:
+RxJS is effectively used, particularly with hot observables, to handle asynchronous operations such as loading static comments. This not only simulates the behavior of API calls but also allows for efficient data streaming and manipulation.
+
+
+Innovation:
+The application goes beyond basic requirements by incorporating features like a lightbox for displaying multiple images within a post. This enhances the user experience and showcases a commitment to delivering more than just the minimum specifications.
+
+Best Practices:
+Adherence to best practices is demonstrated throughout the codebase. Proper type declarations are used to enhance code readability and prevent runtime errors. Comments are included where necessary to provide clarity and context for specific code sections.
+
+Subscription and Completion Practices:
+The application employs proper handling of subscriptions and completions in observables to prevent memory leaks and ensure resources are appropriately released.
+
+Conclusion:
+The approach taken in developing this application reflects a commitment to best practices, maintainability, and a positive user experience. By leveraging Angular's capabilities, adhering to coding principles, and incorporating innovative features, the application stands as a solid example of a well-designed and efficiently implemented solution.

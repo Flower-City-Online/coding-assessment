@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Calistoga';
+    src: url('Calistoga-Regular.woff2') format('woff2'),
+        url('Calistoga-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
